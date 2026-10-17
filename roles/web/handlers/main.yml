@@ -1,0 +1,4 @@
+---
+- name: Recarrega o Nginx
+  ansible.builtin.command: /usr/sbin/nginx -s reload
+  changed_when: true

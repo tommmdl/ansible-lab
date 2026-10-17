@@ -1,0 +1,5 @@
+---
+lab_title: "Ansible Lab"
+lab_environment: learning
+lab_color: blue
+lab_root: /srv/ansible-lab

@@ -1,0 +1,20 @@
+name: ansible-lab
+x-node: &node
+  build: .
+  image: ansible-lab-node:local
+  healthcheck:
+    test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=3)"]
+    interval: 5s
+    timeout: 4s
+    retries: 6
+services:
+  blue:
+    <<: *node
+    container_name: ansible-lab-blue
+    ports:
+      - "127.0.0.1:8003:8080"
+  green:
+    <<: *node
+    container_name: ansible-lab-green
+    ports:
+      - "127.0.0.1:8004:8080"

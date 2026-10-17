@@ -1,0 +1,6 @@
+---
+- name: Configura os servidores do laboratório
+  hosts: web
+  gather_facts: true
+  roles:
+    - web

@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ansible Lab · {{ inventory_hostname | e }}</title>
+<style>body{background:#101722;color:#edf2f8;font:19px system-ui;max-width:750px;margin:12vh auto;padding:24px}small{color:{{ '#75aeff' if lab_color == 'blue' else '#7adfb2' }}}h1{font-size:2.5rem;line-height:1.2}p{line-height:1.6}code{color:#a5c8f7}</style>
+<small>ANSIBLE LAB / {{ inventory_hostname | upper | e }}</small>
+<h1>{{ lab_title | e }}</h1>
+<p>Esta página foi configurada pelo Ansible. Cada servidor recebe o mesmo role, com variáveis diferentes.</p>
+<p>This page was configured by Ansible. Each server receives the same role with different variables.</p>
+<p>Host: <code>{{ inventory_hostname | e }}</code> · Ambiente / Environment: <code>{{ lab_environment | e }}</code></p>
+<p>Experimente alterar o arquivo no container e rodar o playbook novamente.<br>Try editing the file inside the container, then run the playbook again.</p>
+</html>
