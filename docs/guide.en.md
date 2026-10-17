@@ -45,7 +45,9 @@ The page identifies its host/environment. Configuration adds `X-Lab-Host` and `X
 
 Only Nginx configuration notifies the handler. HTML changes need no reload. Repeated notifications of the same handler are grouped during a run. Tests observe the response header after reload.
 
-These containers have no service manager. Initial startup uses a command guarded by `creates: /run/nginx.pid` to avoid restarting on every playbook run. This shortcut assumes the PID file represents a valid process; it is not full supervision or a solution for stale PID files/container restarts. Start fresh with `compose down`, `compose up` and the playbook. Adapt the role to a service module and available manager for real hosts.
+The containers do not run systemd. The Debian package provides a SysV script at `/etc/init.d/nginx`; the `service` module explicitly uses that mechanism for startup and reload. It checks service state instead of relying only on a PID file's existence. Adapt the service backend for a VM running systemd.
+
+The role also checks for package lists before trusting apt cache age. A freshly built image can have removed those lists while leaving a recent directory timestamp.
 
 ## Check, diff and idempotence
 

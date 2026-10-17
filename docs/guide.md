@@ -45,7 +45,9 @@ A página identifica o host e o ambiente. A configuração adiciona os headers `
 
 Só a configuração do Nginx notifica o handler. Alterar apenas HTML não precisa de reload. Várias notificações do mesmo handler são agrupadas na execução. Os testes observam a mudança de header após o reload.
 
-Este container não usa um gerenciador de serviços. O primeiro start usa um comando com `creates: /run/nginx.pid` para evitar reiniciar o processo a cada playbook. Esse atalho supõe que o PID file represente um processo válido; não é uma solução para supervisão completa, PID stale ou reinício do container. Para começar de novo, use `compose down`, `compose up` e o playbook. Em hosts reais, adapte o role para um módulo de serviço e o gerenciador disponível.
+Os containers não executam systemd. O pacote Debian fornece um script SysV em `/etc/init.d/nginx`, e o módulo `service` usa explicitamente esse mecanismo para iniciar e recarregar Nginx. Assim ele confere o estado do serviço, em vez de depender apenas da existência de um PID file. Em uma VM com systemd, adapte o backend de serviço ao ambiente.
+
+O role também verifica se existem listas de pacotes antes de confiar na idade do cache apt. Uma imagem recém-criada pode ter removido essas listas mesmo que a pasta ainda tenha uma data recente.
 
 ## Check, diff e idempotência
 

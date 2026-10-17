@@ -48,7 +48,8 @@
     validate: '/usr/sbin/nginx -t -c %s'
   notify: Recarrega o Nginx
 
-- name: Inicia o Nginx quando ainda não existe um processo
-  ansible.builtin.command: /usr/sbin/nginx
-  args:
-    creates: /run/nginx.pid
+- name: Mantém o Nginx iniciado pelo script de serviço do pacote
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    use: sysvinit

@@ -1,4 +1,6 @@
 ---
 - name: Recarrega o Nginx
-  ansible.builtin.command: /usr/sbin/nginx -s reload
-  changed_when: true
+  ansible.builtin.service:
+    name: nginx
+    state: reloaded
+    use: sysvinit
