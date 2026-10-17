@@ -1,0 +1,9 @@
+{
+  "ansible": "ansible [core 2.20.10]",
+  "controller_python": "Python 3.14.4",
+  "docker_engine": "29.1.3",
+  "compose": "Docker Compose version v5.6.0",
+  "nginx": "nginx version: nginx/1.26.3",
+  "target_python": "Python 3.13.5",
+  "collection": "community.docker 5.4.0"
+}

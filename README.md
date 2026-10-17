@@ -48,6 +48,8 @@ python3 tests/verify.py
 
 Ele acompanha a primeira configuração, a repetição sem mudanças, uma alteração limitada a `blue`, o modo check e a correção de drift. Os alvos ficam configurados ao final para você explorar. Os [resultados registrados](docs/validation.md) dizem o que foi executado e quais são os limites do teste.
 
+Os 16 testes passaram localmente e no GitHub Actions, incluindo repetição com `changed=0`, alteração limitada a um alvo e correção de drift.
+
 ## Quando terminar
 
 ```bash

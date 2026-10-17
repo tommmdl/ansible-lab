@@ -48,6 +48,8 @@ python3 tests/verify.py
 
 It follows the initial configuration, an unchanged repeat, a change limited to `blue`, check mode and drift repair. Targets remain configured afterward so you can explore. The [recorded results](docs/validation.en.md) explain what actually ran and the limits of those checks.
 
+All 16 checks passed locally and in GitHub Actions, including `changed=0` reruns, changes limited to one target and drift repair.
+
 ## When you are done
 
 ```bash

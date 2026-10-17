@@ -1,0 +1,214 @@
+{
+  "executed_at_utc": "2026-10-17T23:42:27Z",
+  "checks_passed": 16,
+  "checks": [
+    "Playbook syntax valid",
+    "Both inventory targets reachable through Docker connection",
+    "First apply changes both targets",
+    "Both pages served with distinct host variables",
+    "Pages include Portuguese and English text",
+    "Second apply reports changed=0 on both hosts",
+    "Unchanged configuration does not call reload handler",
+    "Limit changes blue only and runs reload handler",
+    "Green remains learning while blue becomes staging",
+    "Default variables restore learning environment",
+    "Check mode predicts blue drift while green stays unchanged",
+    "Check mode does not repair the live manual change",
+    "Apply repairs drift and reloads Nginx",
+    "After repair both hosts converge to changed=0",
+    "Invalid variables fail before changing targets",
+    "Invalid run leaves both HTTP environments unchanged"
+  ],
+  "runs": {
+    "first-apply": {
+      "hosts": {
+        "blue": {
+          "ok": 9,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 6,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "green": {
+          "ok": 9,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 6,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "handlers": [
+        "web : Recarrega o Nginx"
+      ]
+    },
+    "second-apply": {
+      "hosts": {
+        "blue": {
+          "ok": 8,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "green": {
+          "ok": 8,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "handlers": []
+    },
+    "limited-staging": {
+      "hosts": {
+        "blue": {
+          "ok": 9,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 3,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "handlers": [
+        "web : Recarrega o Nginx"
+      ]
+    },
+    "restore-defaults": {
+      "hosts": {
+        "blue": {
+          "ok": 9,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 3,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "green": {
+          "ok": 8,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "handlers": [
+        "web : Recarrega o Nginx"
+      ]
+    },
+    "check-diff": {
+      "hosts": {
+        "blue": {
+          "ok": 9,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 2,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "green": {
+          "ok": 8,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "handlers": [
+        "web : Recarrega o Nginx"
+      ]
+    },
+    "repair-drift": {
+      "hosts": {
+        "blue": {
+          "ok": 9,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 2,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "green": {
+          "ok": 8,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "handlers": [
+        "web : Recarrega o Nginx"
+      ]
+    },
+    "final-apply": {
+      "hosts": {
+        "blue": {
+          "ok": 8,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "green": {
+          "ok": 8,
+          "failures": 0,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "handlers": []
+    },
+    "invalid-environment": {
+      "hosts": {
+        "blue": {
+          "ok": 1,
+          "failures": 1,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        },
+        "green": {
+          "ok": 1,
+          "failures": 1,
+          "unreachable": 0,
+          "changed": 0,
+          "skipped": 0,
+          "rescued": 0,
+          "ignored": 0
+        }
+      },
+      "handlers": []
+    }
+  },
+  "targets": {
+    "blue": "http://127.0.0.1:8003",
+    "green": "http://127.0.0.1:8004"
+  },
+  "final_state": "Both configured targets running; environment learning"
+}
